@@ -1,0 +1,11 @@
+{
+  "logLevel": "DEBUG",
+  "mongoUrl": "mongodb://vendor:vendor123@ds157654.mlab.com:57654/vendor",
+  "scrapeUrl": "http://marketplace.datademocrats.org:9090/cards",
+  "kafkaHost": "13.250.126.36:9092",
+  "kafkaKeys": {
+    "users":["userId"],
+    "stores":["id"],
+    "surprise_candies":["candie"]
+  }
+}

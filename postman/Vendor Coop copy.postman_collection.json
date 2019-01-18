@@ -1,0 +1,374 @@
+{
+	"info": {
+		"name": "Vendor Coop copy",
+		"_postman_id": "016f933a-c628-7b75-7175-efec9d8d0c3b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"sellerId\": 124\n}"
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new group",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzZWxsZXJJZCI6MTIzLCJpYXQiOjE1MjM3ODk2NzMsImV4cCI6MTUyNjQ2ODA3M30.gX_kiHxdbCnpExLmI4eBeXQqHecLyXfaXSkoEEFKUair3yFEwSo4whebiV69AkVYQVQNTh9SQljg64VvO9nVNg",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test\",\n\t\"description\": \"This is test coop group\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/secure/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"secure",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "read group",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzZWxsZXJJZCI6MTIzLCJpYXQiOjE1MjM3ODk2NzMsImV4cCI6MTUyNjQ2ODA3M30.gX_kiHxdbCnpExLmI4eBeXQqHecLyXfaXSkoEEFKUair3yFEwSo4whebiV69AkVYQVQNTh9SQljg64VvO9nVNg",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/secure/coop/{{_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"secure",
+						"coop",
+						"{{_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invite member",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzZWxsZXJJZCI6MTIzLCJpYXQiOjE1MjM3OTQwOTYsImV4cCI6MTUyNjQ3MjQ5Nn0.w41VKM_z2pdQO_nBaXVJ3FPmGfBd7-7-8C4JuuSxA4_gjKWjXO7-eAK7gzAuXbbxlMsKZxMFQzcg9ScT-A0eNw",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": \"5ad336abb8ca291c8f1980d2\", \n\t\"sellerId\": 124, \n\t\"expiryDate\": null\n}"
+				},
+				"url": {
+					"raw": "{{url}}/secure/admin/invite",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"secure",
+						"admin",
+						"invite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request to join",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzZWxsZXJJZCI6MTI0LCJpYXQiOjE1MjM3OTY3OTIsImV4cCI6MTUyNjQ3NTE5Mn0.O_Oe2rzrgU7UoVNmuov4iwZeinop_KNovgsYs9pgJ2CPDYj9uN-mkFzsugMeEJMwS45WcPk1gi9OGz7_4T2kHg",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": \"5ad336abb8ca291c8f1980d2\", \n\t\"sellerId\": 124, \n\t\"expiryDate\": null\n}"
+				},
+				"url": {
+					"raw": "{{url}}/secure/member/request_join",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"secure",
+						"member",
+						"request_join"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invitation response",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzZWxsZXJJZCI6MTI0LCJpYXQiOjE1MjM3OTY3OTIsImV4cCI6MTUyNjQ3NTE5Mn0.O_Oe2rzrgU7UoVNmuov4iwZeinop_KNovgsYs9pgJ2CPDYj9uN-mkFzsugMeEJMwS45WcPk1gi9OGz7_4T2kHg",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": \"5ad336abb8ca291c8f1980d2\", \n\t\"sellerId\": 124, \n\t\"response\": true\n}"
+				},
+				"url": {
+					"raw": "{{url}}/secure/member/invitation_response",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"secure",
+						"member",
+						"invitation_response"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Join response from admin",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzZWxsZXJJZCI6MTIzLCJpYXQiOjE1MjM3ODk2NzMsImV4cCI6MTUyNjQ2ODA3M30.gX_kiHxdbCnpExLmI4eBeXQqHecLyXfaXSkoEEFKUair3yFEwSo4whebiV69AkVYQVQNTh9SQljg64VvO9nVNg",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": \"5ad336abb8ca291c8f1980d2\", \n\t\"sellerId\": 124, \n\t\"response\": true\n}"
+				},
+				"url": {
+					"raw": "{{url}}/secure/admin/join_response",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"secure",
+						"admin",
+						"join_response"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kick out member",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzZWxsZXJJZCI6MTIzLCJpYXQiOjE1MjM3OTQwOTYsImV4cCI6MTUyNjQ3MjQ5Nn0.w41VKM_z2pdQO_nBaXVJ3FPmGfBd7-7-8C4JuuSxA4_gjKWjXO7-eAK7gzAuXbbxlMsKZxMFQzcg9ScT-A0eNw",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": \"5ad336abb8ca291c8f1980d2\", \n\t\"sellerId\": 124\n}"
+				},
+				"url": {
+					"raw": "{{url}}/secure/admin/kick_out",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"secure",
+						"admin",
+						"kick_out"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor unjoin",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzZWxsZXJJZCI6MTI0LCJpYXQiOjE1MjM3OTY3OTIsImV4cCI6MTUyNjQ3NTE5Mn0.O_Oe2rzrgU7UoVNmuov4iwZeinop_KNovgsYs9pgJ2CPDYj9uN-mkFzsugMeEJMwS45WcPk1gi9OGz7_4T2kHg",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": \"5ad336abb8ca291c8f1980d2\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/secure/member/unjoin",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"secure",
+						"member",
+						"unjoin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

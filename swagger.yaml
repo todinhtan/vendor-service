@@ -1,0 +1,157 @@
+swagger: "2.0"
+info:
+  title: "Noggin Vendor Service"
+  description: "API for vendor and vendor coop integration with Noggin system"
+  version: "1.0.0"
+  termsOfService: "https://www.nogginasia.com/terms/"
+  contact:
+    email: "support@nogginasia.com"
+  license:
+    name: "Noggin License Agreement"
+    url: "https://www.nogginasia.com/licenses/LICENSE-2.0.html"
+host: "api.noggin.ai"
+basePath: "/"
+tags:
+- name: "vendors"
+  description: "Vendor endpoints support vendor to integrate with Noggin system"
+schemes:
+- "https"
+paths:
+  /vendors:
+    post:
+      tags:
+      - "vendors"
+      summary: "Register new vendor"
+      description: "Create new vendor in Noggin database"
+      operationId: "addVendor"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "vendor"
+        description: "vendor's information to store in Noggin database"
+        required: true
+        schema:
+          $ref: "#/definitions/VendorCreateRequest"
+      responses:
+        201:
+          description: "Vendor register successfully"
+          schema:
+            $ref: "#/definitions/VendorCreateSuccess"
+        409:
+          description: "Vendor already existed"
+          schema:
+            $ref: "#/definitions/VendorCreateExisted"
+        400:
+          description: "Missing required parameters"
+
+  /vendors/{vendorId}/public-key:
+    get:
+      tags:
+      - "vendors"
+      summary: "Get vendor public key"
+      description: "Get vendor's public key by vendorId to validate access_token from vendor for authorize on Noggin Services"
+      operationId: "getPublicKey"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "public key is found"
+          schema:
+            $ref: "#/definitions/VendorPublicKeyFound"
+securityDefinitions:
+  Bearer:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+    description: "This is a JWT token that has your Noggin `vendorId` in the `iss` tag.
+      The JWT token would be signed with your Private Key.
+      Noggin will decrypt with your Public Key."
+definitions:
+  VendorPublicKeyFound:
+    type: "string"
+    example: "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW+jK+xQU9a03GUnKHkkle+Q0pX/g6jXZ7r1/xAK5Do2kQ+X5xK9cipRgEKwIDAQAB"
+  VendorCreateExisted:
+    type: "object"
+    properties:
+      error:
+        type: "object"
+        properties:
+          message:
+            type: "string"
+            example: "Vendor already existed"
+          data:
+            type: "object"
+            properties:
+              email:
+                type: "string"
+                example: "abc@gmail.com"
+  VendorCreateSuccess:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+        description: "Vendor registration successful payload"
+  VendorCreateRequest:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "name of vendor"
+      email:
+        type: "string"
+        description: "email of vendor"
+        require: true
+      websites:
+        type: "array"
+        description: "websites of vendor"
+        require: true
+      password:
+        type: "string"
+        description: "password of vendor"
+      get_in_touch:
+        type: "object"
+        description: "contact information of vendor"
+        properties:
+          email:
+            type: "string"
+            description: "email for contact of vendor"
+          website:
+            type: "string"
+            description: "website for contact of vendor"
+          sms:
+            type: "string"
+            description: "sms for contact of vendor"
+          phone:
+            type: "string"
+            description: "phone for contact of vendor"
+          address:
+            type: "string"
+            description: "address for contact of vendor"
+      industry:
+        type: "string"
+      addresses:
+        type: "array"
+      active:
+        type: "string"
+      agency_code:
+        type: "array"
+      qr_code:
+        type: "array"
+      actionMethods:
+        type: "array"
+      created_at:
+        type: "string"
+        format: "date"
+      updated_at:
+        type: "string"
+        format: "date"
+      coopIds:
+        type: "array"
+      publicKey:
+        type: "string"
+        description: "RS256 public key"
+        example: "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW+jK+xQU9a03GUnKHkkle+Q0pX/g6jXZ7r1/xAK5Do2kQ+X5xK9cipRgEKwIDAQAB"

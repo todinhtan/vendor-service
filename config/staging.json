@@ -1,0 +1,5 @@
+{
+  "mongoUrl": "mongodb://localhost:27017/vendor",
+  "scrapeUrl": "https://marketplace.noggin.space/cards",
+  "kafkaHost": "172.31.0.229:9092"
+}
