@@ -7,6 +7,9 @@ const COOP_STATUSES = {
 const FILTER_TYPES = {
   act: 'act',
   noAct: 'noAct',
+  byTag: 'byTag',
+  blockList: 'blockList',
+  vendor: 'vendor',
 };
 
 module.exports = {
